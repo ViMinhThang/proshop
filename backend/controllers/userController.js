@@ -20,7 +20,7 @@ const authUser = asyncHanlder(async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV !== "development",
       sameSite: "strict",
-      maxAge: 30 * 24 * 60 * 60 * 1000 // 30 Days,
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 Days,
     });
 
     res.json({
@@ -50,7 +50,11 @@ const registerUser = asyncHanlder(async (req, res) => {
 // @access      Private
 
 const logoutUser = asyncHanlder(async (req, res) => {
-  res.send("logout user");
+  res.cookie("jwt", "", {
+    httpOnlyLtrue,
+    expires: new Date(0),
+  });
+  res.status(200).json({ message: "logged out successfully" });
 });
 
 // @desc        Logout user / clear cookie
