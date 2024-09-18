@@ -19,9 +19,9 @@ const Header = () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
-      navigate('/login')
+      navigate("/login");
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 
@@ -63,6 +63,13 @@ const Header = () => {
                   Sign In{" "}
                 </Nav.Link>
               </LinkContainer>
+            )}
+            {userInfo && userInfo.isAdmin && (
+              <NavDropdown title="Admin" id="adminmenu">
+                <LinkContainer to="/admin/orderList">
+                  <NavDropdown.Item>Orders</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
             )}
           </Nav>
         </Navbar.Collapse>
