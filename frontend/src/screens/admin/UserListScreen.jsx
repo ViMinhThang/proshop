@@ -1,4 +1,3 @@
-import React from "react";
 
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
@@ -55,7 +54,7 @@ const UserListScreen = () => {
                   <a href={`mailto:${user.email}`}>{user.email}</a>
                 </td>
                 <td>
-                  {order.isAdmin ? (
+                  {user.isAdmin ? (
                     <FaCheck style={{ color: "green" }} />
                   ) : (
                     <FaTimes style={{ color: "red" }} />
