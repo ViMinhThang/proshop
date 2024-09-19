@@ -103,7 +103,7 @@ const OrderScreen = () => {
       await deliverOrder(orderId);
       refetch();
       toast.success("Order delivered");
-    } catch (error) {
+    } catch (err) {
       toast.error(err?.data?.message || err.message);
     }
   };

@@ -5,7 +5,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/userApiSlice";
 import { logout } from "../slices/authSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { resetCart } from '../slices/cartSlice';
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -19,9 +20,12 @@ const Header = () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
+      // NOTE: here we need to reset cart state for when a user logs out so the next
+      // user doesn't inherit the previous users cart and shipping
+      dispatch(resetCart());
       navigate("/login");
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -49,13 +53,16 @@ const Header = () => {
               </Nav.Link>
             </LinkContainer>
             {userInfo ? (
-              <NavDropdown title={userInfo.name} id="username">
-                <LinkContainer to="/profile">
+              <>
+                <NavDropdown title={userInfo.name} id="username">
+                  <NavDropdown.Item as={Link} to="/profile">
+                    Profile
+                  </NavDropdown.Item>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
                   </NavDropdown.Item>
-                </LinkContainer>
-              </NavDropdown>
+                </NavDropdown>
+              </>
             ) : (
               <LinkContainer to="/login">
                 <Nav.Link>
