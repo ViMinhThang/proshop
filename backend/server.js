@@ -42,4 +42,4 @@ app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use(notFound);
 app.use(errorHandler);
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(port,'0.0.0.0', () => console.log(`Server is running on port ${port}`));
