@@ -5,7 +5,7 @@ import asyncHandler from "../middleware/asyncHandler.js";
 // @route       GET /api/products
 // @access      Public
 const getProduct = asyncHandler(async (req, res) => {
-  const pageSize = 2;
+  const pageSize = 10;
   const page = Number(req.query.pageNumber) || 1;
   const keyword = req.query.keyword
     ? { name: { $regex: req.query.keyword, $options: "i" } }

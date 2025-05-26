@@ -23,7 +23,7 @@ const OrderScreen = () => {
     error,
   } = useGetOrderDetailsQuery(orderId);
 
-  const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation;
+  const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
 
   const [deliverOrder, { isLoading: loadingDeliver }] =
     useDeliverOverMutation();

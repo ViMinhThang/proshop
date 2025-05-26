@@ -31,6 +31,7 @@ import ProductListScreen from "./screens/admin/ProductListScreen";
 import UserListScreen from "./screens/admin/UserListScreen";
 import UserEditScreen from "./screens/admin/UserEditScreen";
 import { HelmetProvider } from "react-helmet-async";
+import ProductEditScreen from "./screens/admin/ProductEditScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -60,7 +61,7 @@ const router = createBrowserRouter(
           path="/admin/productlist/:pageNumber"
           element={<ProductListScreen />}
         />
-        <Route path="/admin/product/:id/edit" element={<productEditScreen />} />
+        <Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />
         <Route path="/admin/userlist" element={<UserListScreen />} />
         <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
       </Route>

@@ -95,7 +95,7 @@ const getUserProfile = asyncHanlder(async (req, res) => {
 // @access      Private/Admin
 
 const updateUserProfile = asyncHanlder(async (req, res) => {
-  const user = User.findById(req.user._id);
+  const user = await User.findById(req.user._id);
 
   if (user) {
     user.name = req.body.name || user.name;

@@ -12,7 +12,7 @@ import {
 } from "../../slices/productApiSlice";
 import React from "react";
 
-const productEditScreen = () => {
+const ProductEditScreen = () => {
   const { id: productId } = useParams();
 
   const [name, setName] = useState("");
@@ -52,7 +52,7 @@ const productEditScreen = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const updateProduct = {
+    const updateData = {
       productId,
       name,
       price,
@@ -63,7 +63,7 @@ const productEditScreen = () => {
       description,
     };
 
-    const result = await updateProduct(updateProduct);
+    const result = await updateProduct(updateData);
     if (result.error) {
       toast.error(result.error);
     } else {
@@ -178,4 +178,4 @@ const productEditScreen = () => {
   );
 };
 
-export default productEditScreen;
+export default ProductEditScreen;

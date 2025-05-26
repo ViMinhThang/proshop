@@ -9,7 +9,7 @@ const SearchBox = () => {
   const [keyword, setKeyword] = useState(urlKeyWord || "");
 
   const submitHandler = (e) => {
-    e.prenventDefaullt();
+    e.preventDefault();
     if (keyword.trim()) {
       setKeyword("");
       navigate(`/search/${keyword}`);
