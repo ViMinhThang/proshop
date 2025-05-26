@@ -1,5 +1,6 @@
 {
-  "scripts": {
+  "type":"module",
+ "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
